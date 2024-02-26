@@ -9,21 +9,42 @@ const CreateCr = () => {
     topic: '',
     description: '',
     type: '',
-    typeimage: 'male', // Default value for gender
-    priority: '', // Added priority field
+    typeimage: 'male',
+    priority: '',
+    // Add fields for file inputs
+    file: [],
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
+    if (e.target.type === 'file') {
+      setFormData({
+        ...formData,
+        fileInputs: [...formData.fileInputs, e.target.files[0]],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.value,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${api.defaults.baseURL}/crs/`, formData);
+      const data = new FormData();
+      // Append the file inputs to FormData
+      formData.fileInputs.forEach((file) => data.append('files', file));
+      // Append other form data fields to FormData
+      data.append('name', formData.name);
+      data.append('department', formData.department);
+      data.append('topic', formData.topic);
+      data.append('description', formData.description);
+      data.append('type', formData.type);
+      data.append('typeimage', formData.typeimage);
+      data.append('priority', formData.priority);
+      
+      const response = await axios.post(`${api.defaults.baseURL}/crs/`, data);
       // Optionally, reset form fields here
     } catch (error) {
       console.error('Error inserting data:', error);
@@ -61,6 +82,10 @@ const CreateCr = () => {
             <div>
               <label htmlFor="priority" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Priority</label>
               <input type="number" id="priority" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" onChange={handleChange} />
+            </div>
+            <div>
+              <label htmlFor="files" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Files</label>
+              <input type="file" id="files" multiple className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={handleChange} />
             </div>
           </div>
           <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>

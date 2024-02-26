@@ -6,6 +6,8 @@ import AddUser from './addUser';
 
 
 function RightPanel({ selectedItem }) {
+
+    
   const renderContent = () => {
     switch (selectedItem) {
       case 'dashboard':
@@ -29,6 +31,8 @@ function RightPanel({ selectedItem }) {
 
   return <div className="flex-grow bg-gray-200">{renderContent()}</div>;
 }
+
+
 
 const DashboardContent = () => <h2>Dashboard Content</h2>;
 const CrViewContent = () => <h2>CR View Content</h2>;
