@@ -3,6 +3,7 @@ import UserAccount from './userAccount';
 import Crview from './viewCr'
 import CreateCr from './createCr'
 import AddUser from './addUser';
+import Profile from './profile';
 
 
 function RightPanel({ selectedItem }) {
@@ -18,8 +19,10 @@ function RightPanel({ selectedItem }) {
         return <CreateCr />;
       case 'userAccont':
         return <UserAccount />;
-        case 'addUserAccont':
+      case 'addUserAccont':
         return <AddUser />;
+      case 'profile':
+          return <Profile />;
       case 'Log':
         return <LogContent />;
       case 'Log Out':

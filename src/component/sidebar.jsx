@@ -161,7 +161,7 @@ function SideBar({ handleComponentSelect }) {
             </li>
             <li>
               <button
-                onClick={() => handleClick('addUserAccont')}
+                onClick={() => handleClick('profile')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg

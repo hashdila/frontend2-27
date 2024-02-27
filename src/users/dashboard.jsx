@@ -9,6 +9,19 @@ function ParentComponent() {
     setSelectedItem(componentName);
   };
 
+
+  
+
+  const fetchUserProfile = async (userId) => {
+    try {
+      const response = await fetch(`your-api-endpoint/${userId}`);
+      const data = await response.json();
+      setUserProfile(data);
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+    }
+  };
+
   return (
     <div>
       {/* Top Navigation Bar */}
