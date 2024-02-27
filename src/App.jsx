@@ -9,6 +9,7 @@ import UserRegistration from './users/userRegistration'
 import Dashboard from './users/dashboard';
 import UserAccount from './component/userAccount';
 import CreateCr from './component/createCr'
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -19,6 +20,7 @@ function App() {
     
       <div>
     <Router>
+      <ToastContainer/>
           <Routes>
             <Route path="/" element={<Home />} />;
             <Route path="/UserLogin" element= {<UserLogin/>} />
@@ -26,7 +28,6 @@ function App() {
             <Route path="/Dashboard" element= {<Dashboard/>}/>
             <Route path="/UserAccount" element= {<UserAccount/>}/>
             <Route path="/CreateCr" element={<CreateCr/>}/>
-            
           </Routes>
         </Router>
       </div>    

@@ -45,7 +45,7 @@ function Register() {
       const response = await api.post('/users/register/', formData);
       console.log('Data inserted successfully:', response.data);
       toast.success('You have successfully registered!');
-      navigate('/login');
+      navigate('/userlogin');
      
     } catch (error) {
       console.error('Error inserting data:', error);
@@ -80,7 +80,7 @@ function Register() {
             <div className="relative">
               <input type={showPassword ? 'text' : 'password'} name="password" id="password" value={formData.password} onChange={handleChange} className="mt-1 p-2.5 w-full border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" required />
               <button type="button" className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-700" onClick={togglePasswordVisibility}>
-                {showPassword ? <FaEyeSlash className="h-5 w-5" /> : <FaEye className="h-5 w-5" />}
+                {showPassword ? <FaEye className="h-5 w-5" /> : <FaEyeSlash className="h-5 w-5" />}
               </button>
             </div>
           </div>
@@ -89,7 +89,7 @@ function Register() {
             <div className="relative">
               <input type={showPassword ? 'text' : 'password'} name="cpassword" id="cpassword" value={formData.cpassword} onChange={handleChange} className="mt-1 p-2.5 w-full border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" required />
               <button type="button" className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-700" onClick={togglePasswordVisibility}>
-                {showPassword ? <FaEyeSlash className="h-5 w-5" /> : <FaEye className="h-5 w-5" />}
+                {showPassword ? <FaEye className="h-5 w-5" /> : <FaEyeSlash className="h-5 w-5" />}
               </button>
             </div>          </div>
           <div className="mb-4">

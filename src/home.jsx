@@ -5,7 +5,7 @@ import UserRegistration from './users/userRegistration'
 function Home() {
   return (
     <div>
-        <UserRegistration/>
+        <UserLogin/>
     </div>
   )
 }
