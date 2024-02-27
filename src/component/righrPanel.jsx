@@ -12,12 +12,12 @@ function RightPanel({ selectedItem }) {
     switch (selectedItem) {
       case 'dashboard':
         return <DashboardContent />;
-      case 'Crview':
-        return <Crview />;
+      // case 'Crview':
+      //   return <Crview />;
       case 'CreateCr':
         return <CreateCr />;
-      case 'userAccont':
-        return <UserAccount />;
+      // case 'userAccont':
+      //   return <UserAccount />;
         case 'addUserAccont':
         return <AddUser />;
       case 'Log':

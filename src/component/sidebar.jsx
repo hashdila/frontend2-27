@@ -1,14 +1,13 @@
 // SideBar.js
 import React from 'react';
 import Navbar from './Navbar';
-import { Outlet } from 'react-router-dom';
-function SideBar({ handleComponentSelect }) {
-  const handleClick = (componentName) => {
-    if (typeof handleComponentSelect === 'function') {
-      handleComponentSelect(componentName);
-    }
-  };
+import { Outlet, useNavigate } from 'react-router-dom';
+//function SideBar({ handleComponentSelect }) {
+ 
+ const SideBar =() =>{
+  let navigate = useNavigate();
 
+ 
   return (
     
     
@@ -44,7 +43,7 @@ function SideBar({ handleComponentSelect }) {
           <ul className="space-y-2 font-medium">
             <li>
               <button
-                onClick={() => handleClick('dashboard')}
+                onClick={() => navigate('userAccount')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg

@@ -44,7 +44,7 @@ function UserLogin() {
         if (data.accessToken){
           localStorage.setItem('token', data.accessToken);
           toast.success('You have  successfully logged in!');
-          navigate('/dashboard');
+          navigate('/sidebar');
         } else {
           setError (data.message || 'login failed. Please try again');
           }
