@@ -57,8 +57,8 @@ function Register() {
  
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-white">
-      <div className="p-4 max-w-md w-full">
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
         <div className="p-6 shadow">
         <h2 className="text-2xl font-semibold mb-6">Register</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
@@ -98,7 +98,7 @@ function Register() {
               <option value="Developer">Select User Type </option>
               <option value="Manager">Developer </option>
               <option value="Creator">Creator</option>
-              <option value="Administrator">Administrator</option>
+
             </select>
           </div>
           <button type="submit" className="w-full bg-blue-500 text-white py-2.5 rounded-md hover:bg-blue-600 transition duration-300">Submit</button>
