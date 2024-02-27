@@ -1,19 +1,16 @@
-
-
-// Import necessary dependencies
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import StatusPopup from '../popup/statuspopup';
+import ViewPopup from '../popup/viewpopup';
 import api from '../api';
 
-// Create your UserAccount component
 function UserAccount() {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [viewPopupOpen, setViewPopupOpen] = useState(false);
 
   useEffect(() => {
-    // Function to fetch users from the API
     const fetchUsers = async () => {
       try {
         const response = await axios.get(`${api.defaults.baseURL}/users`);
@@ -22,18 +19,38 @@ function UserAccount() {
         console.error('Error fetching users:', error);
       }
     };
-
-    // Call the fetchUsers function when the component mounts
     fetchUsers();
   }, []);
 
-  // Function to handle opening the StatusPopup
-  const openStatusPopup = (user) => {
+  const handleStatusPopupOpen = (user) => {
     setSelectedUser(user);
   };
 
-  // Function to update users after changing status
-  const updateUser = async () => {
+  const handleViewPopupOpen = (user) => {
+    setSelectedUser(user);
+    setViewPopupOpen(true);
+  };
+
+  const handleStatusChange = async (status) => {
+    try {
+      await axios.post(`${api.defaults.baseURL}/users/approve/${selectedUser.userId}`);
+      updateUserList();
+      closeStatusPopup();
+    } catch (error) {
+      console.error('Error updating status:', error);
+    }
+  };
+
+  const closeStatusPopup = () => {
+    setSelectedUser(null);
+  };
+
+  const closeViewPopup = () => {
+    setSelectedUser(null);
+    setViewPopupOpen(false);
+  };
+
+  const updateUserList = async () => {
     try {
       const response = await axios.get(`${api.defaults.baseURL}/users`);
       setUsers(response.data);
@@ -55,9 +72,7 @@ function UserAccount() {
               <th className="px-4 py-2">Username</th>
               <th className="px-4 py-2">User Type</th>
               <th className="px-4 py-2">Status</th>
-              <th className="px-4 py-2">Action</th>
-              <th className="px-4 py-2">View</th>
-              <th className="px-4 py-2">Edit</th>
+              <th className="px-4 py-2">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -70,13 +85,13 @@ function UserAccount() {
                 <td className="px-4 py-2">{user.userType}</td>
                 <td className="px-4 py-2">{user.status}</td>
                 <td>
-                  <button onClick={() => openStatusPopup(user)} className="btn">Change Status</button>
+                  <button onClick={() => handleStatusPopupOpen(user)} className="btn">Change Status</button>
+                  <Popup open={viewPopupOpen} closeOnDocumentClick onClose={closeViewPopup}>
+                    <ViewPopup user={selectedUser} close={closeViewPopup} />
+                  </Popup>
                 </td>
                 <td>
-                  <button onClick={() => handleView(user)} className="btn">View</button>
-                </td>
-                <td>
-                  <button onClick={() => handleEdit(user)} className="btn">Edit</button>
+                  <button onClick={() => handleViewPopupOpen(user)} className="btn">View</button>
                 </td>
               </tr>
             ))}
@@ -84,7 +99,7 @@ function UserAccount() {
         </table>
       </div>
       {selectedUser && (
-        <StatusPopup close={() => setSelectedUser(null)} user={selectedUser} updateUser={updateUser} />
+        <StatusPopup close={closeStatusPopup} user={selectedUser} updateUser={updateUserList} />
       )}
     </div>
   );

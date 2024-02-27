@@ -98,7 +98,7 @@ function Register() {
               <option value="UserType">Select User Type </option>
               <option value="Developer">Developer </option>
               <option value="Creator">Creator</option>
-              <option value="Administrator">Administrator</option>
+              
             </select>
           </div>
           <button type="submit" className="w-full bg-blue-500 text-white py-2.5 rounded-md hover:bg-blue-600 transition duration-300">Submit</button>

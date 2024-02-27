@@ -1,6 +1,7 @@
 // SideBar.js
 import React from 'react';
-
+import Navbar from './Navbar';
+import { Outlet } from 'react-router-dom';
 function SideBar({ handleComponentSelect }) {
   const handleClick = (componentName) => {
     if (typeof handleComponentSelect === 'function') {
@@ -9,6 +10,8 @@ function SideBar({ handleComponentSelect }) {
   };
 
   return (
+    
+    
     <>
       <button
         data-drawer-target="default-sidebar"
@@ -205,6 +208,13 @@ function SideBar({ handleComponentSelect }) {
           </ul>
         </div>
       </aside>
+      <div className="p-4 sm:ml-64">
+        <div className="col p-0 m-0">
+          <div className=" d-flex justify-content-center ">
+          </div>
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 }

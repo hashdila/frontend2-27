@@ -11,7 +11,7 @@ function AddUser() {
     firstname: '',
     lastname: '',
     username: '', 
-    password: '',
+    password: '', 
     cpassword:'',
     userType: '',
     status: 'pending'
@@ -44,8 +44,17 @@ function AddUser() {
     try {
       const response = await api.post('/users/register/', formData);
       console.log('Data inserted successfully:', response.data);
-      toast.success('You have successfully registered!');
-      navigate('dashbord');
+      toast.success('You have successfully added a person!');
+      navigate('/Dashboard');
+      setFormData({
+        firstname: '',
+        lastname: '',
+        username: '', 
+        password: '', 
+        cpassword:'',
+        userType: '',
+        status: 'pending'
+      });
      
     } catch (error) {
       console.error('Error inserting data:', error);
@@ -57,9 +66,9 @@ function AddUser() {
  
 
   return (
-    <div className="p-4 sm:ml-64">
-    <div className="col p-0 m-0">
-      <div className="p-2 d-flex justify-content-center shadow">
+    <div className="flex justify-center items-center min-h-screen">
+    <div className=" max-w-md w-full">
+      <div className=" d-flex justify-content-center shadow">
         <h2 className="text-2xl font-semibold mb-6">Register</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleSubmit}>
@@ -94,11 +103,11 @@ function AddUser() {
             </div>          </div>
           <div className="mb-4">
             <label htmlFor="userType" className="block text-sm font-medium text-gray-700">Usertype:</label>
-            <select id="userType" name="userType" value={formData.userType} onChange={handleChange} className="mt-1 p-2.5 w-full border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            <select id="userType" name="userType" value={formData.userType} onChange={handleChange} className="mt-1 p-2.5 w-full border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
               <option value="UserType">Select  User Type</option>
               <option value="Developer"> Developer </option>
               <option value="Creator">Creator</option>
-              <option value="Administrator">Administrator</option>
+              
             </select>
           </div>
           <button type="submit" className="w-full bg-blue-500 text-white py-2.5 rounded-md hover:bg-blue-600 transition duration-300">Submit</button>

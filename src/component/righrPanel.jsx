@@ -29,7 +29,7 @@ function RightPanel({ selectedItem }) {
     }
   };
 
-  return <div className="flex-grow bg-gray-200">{renderContent()}</div>;
+  return <div className="flex-1 bg-gray-200">{renderContent()}</div>;
 }
 
 

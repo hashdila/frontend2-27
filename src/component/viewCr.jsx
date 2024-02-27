@@ -50,9 +50,8 @@ function Crview() {
   };
 
   return (
-    <div className="p-4 sm:ml-64">
-      <div className="col p-0 m-0">
-        <div className="p-2 d-flex justify-content-center shadow">
+    <div className="container mx-auto py-6">
+      <div className="overflow-x-auto">
           <table className="table-auto w-full border-collapse">
             <thead>
               <tr className="bg-gray-200">
@@ -95,7 +94,7 @@ function Crview() {
             </tbody>
           </table>
         </div>
-      </div>
+     
       <PriorityPopup
         editPriority={editPriority}
         selectedCr={selectedCr}
