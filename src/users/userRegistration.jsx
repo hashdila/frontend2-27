@@ -95,7 +95,8 @@ function Register() {
           <div className="mb-4">
             <label htmlFor="userType" className="block text-sm font-medium text-gray-700">Usertype:</label>
             <select id="userType" name="userType" value={formData.userType} onChange={handleChange} className="mt-1 p-2.5 w-full border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-              <option value="Developer">Developer</option>
+              <option value="Developer">Select User Type </option>
+              <option value="Manager">Developer </option>
               <option value="Creator">Creator</option>
               <option value="Administrator">Administrator</option>
             </select>
