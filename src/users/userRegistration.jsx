@@ -57,9 +57,9 @@ function Register() {
  
 
   return (
-    <div className="p-4 sm:ml-64">
-    <div className="col p-0 m-0">
-      <div className="p-2 d-flex justify-content-center shadow">
+    <div className="flex justify-center items-center min-h-screen bg-white">
+      <div className="p-4 max-w-md w-full">
+        <div className="p-6 shadow">
         <h2 className="text-2xl font-semibold mb-6">Register</h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         <form onSubmit={handleSubmit}>
