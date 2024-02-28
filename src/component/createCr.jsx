@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import api from '../api.jsx';
 import { ToastContainer, toast } from 'react-toastify';
@@ -14,6 +15,7 @@ const Insert = () => {
     priority: '',
   });
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -28,6 +30,7 @@ const Insert = () => {
       console.log('Data inserted successfully:', response.data);
   
       toast.success('You have successfully made a change request!');
+      navigate('/dashboard/viewCr');
       setFormData({
         name: '',
         department: '',

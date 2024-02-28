@@ -61,7 +61,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => handleClick('Crview')}
+                onClick={() => navigate('viewCr')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -78,7 +78,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => handleClick('CreateCr')}
+                onClick={() => navigate('createCr')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -101,7 +101,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => handleClick('userAccont')}
+                onClick={() => navigate('userAccount')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -120,7 +120,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => handleClick('addUserAccont')}
+                onClick={() => navigate('addUser')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -139,7 +139,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => handleClick('Log')}
+                onClick={() => navigate('log')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 {/* Replace the SVG icon with a book icon */}
@@ -163,7 +163,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => handleClick('addUserAccont')}
+                onClick={() => navigate('addUser')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg

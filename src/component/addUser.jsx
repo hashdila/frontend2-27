@@ -45,7 +45,7 @@ function AddUser() {
       const response = await api.post('/users/register/', formData);
       console.log('Data inserted successfully:', response.data);
       toast.success('You have successfully added a person!');
-      navigate('/Dashboard');
+      navigate('/dashboard/userAccount');
       setFormData({
         firstname: '',
         lastname: '',

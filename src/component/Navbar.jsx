@@ -2,9 +2,7 @@ import React from "react";
 
 const Navbar = () => {
     return (
-        <div className="p-4 sm:ml-64">
-        <div className="col p-0 m-0">
-          <div className=" d-flex justify-content-center ">
+        <div className="navbar">
                     <nav className="bg-gray-800 text-white">
                         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                             <div className="flex justify-between items-center">
@@ -35,8 +33,6 @@ const Navbar = () => {
                             </div>
                         </div>
                     </nav>
-                    </div>
-                    </div>
                     </div>
                 )
 };

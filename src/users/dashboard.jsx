@@ -1,12 +1,20 @@
 // SideBar.js
 import React from 'react';
-// import Navbar from './Navbar';
+import axios from "axios";
 import { Outlet, useNavigate } from 'react-router-dom';
+import Navbar from '../component/Navbar';
 //function SideBar({ handleComponentSelect }) {
  
- const SideBar =() =>{
+ const Dashboard =() =>{
   let navigate = useNavigate();
-
+  const handleLogout = () => {
+    axios.get('http://localhost:3000/users/logout/')
+    .then(result => {
+      if(result.data.Status) {
+         navigate('/userLogin')
+      }
+    })
+  }
  
   return (
     
@@ -61,7 +69,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => navigate('crView')}
+                onClick={() => navigate('viewCr')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -78,7 +86,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => navigate('CreateCr')}
+                onClick={() => navigate('createCr')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -101,7 +109,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => navigate('userAccont')}
+                onClick={() => navigate('userAccount')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -120,7 +128,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => navigate('addUserAccont')}
+                onClick={() => navigate('addUser')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -139,10 +147,10 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => navigate('Log')}
+                onClick={() => navigate('log')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                {/* Replace the SVG icon with a book icon */}
+                
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-white group-hover:text-gray-900 dark:group-hover:text-white"
                   xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +171,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
             </li>
             <li>
               <button
-                onClick={() => navigate('addUserAccont')}
+                onClick={() => navigate('addUser')}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -183,7 +191,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
             <li>
               <button
-                onClick={() => navigate('Log Out')}
+                onClick={handleLogout}
                 className="flex items-center p-2 text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -210,6 +218,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
       <div className="p-4 sm:ml-64">
         <div className="col p-0 m-0">
           <div className=" d-flex justify-content-center ">
+            <Navbar/>
           </div>
           <Outlet />
         </div>
@@ -218,4 +227,4 @@ import { Outlet, useNavigate } from 'react-router-dom';
   );
 }
 
-export default SideBar;
+export default Dashboard;

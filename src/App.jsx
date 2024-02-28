@@ -11,6 +11,8 @@ import UserAccount from './component/userAccount';
 import Crview from './component/viewCr'
 import CreateCr from './component/createCr'
 import { ToastContainer } from 'react-toastify';
+import AddUser from './component/addUser';
+import Log from './component/log';
 
 
 
@@ -26,11 +28,12 @@ function App() {
             <Route path="/" element={<Home />} />;
             <Route path="/UserLogin" element= {<UserLogin/>} />
             <Route path="/UserRegistration" element= {<UserRegistration/>}/>
-            <Route path="/SideBar" element={<SideBar />}>
+            <Route path="/dashboard" element={<Dashboard />}>
               <Route path="UserAccount" element={<UserAccount />} />
-              <Route path="CreateCr" element={<CreateCr />} />
-              <Route path="Crview" element={<Crview/>}/>
-
+              <Route path="createCr" element={<CreateCr />} />
+              <Route path="viewCr" element={<Crview/>}/>
+              <Route path="addUser" element={<AddUser/>}/>
+              <Route path="log" element={<Log/>}/>
             </Route>
           </Routes>
         </Router>
